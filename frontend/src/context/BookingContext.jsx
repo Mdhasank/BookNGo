@@ -102,6 +102,7 @@ export const BookingProvider = ({ children }) => {
         handlePostBooking,
         handleGetLastBooking,
         handleGetBookedSeats, 
+        backendURL,
       }}
     >
       {children}

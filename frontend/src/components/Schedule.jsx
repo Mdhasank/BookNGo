@@ -3,7 +3,7 @@ import { BookingContext } from '../context/BookingContext';
 import { timeSlots } from '../data';
 
 const Schedule = () => {
-  const { selectedMovie, selectedTimeSlots, setSelectedTimeSlots, setBookedSeats } = useContext(BookingContext);
+  const { selectedMovie, selectedTimeSlots, setSelectedTimeSlots, setBookedSeats } = useContext(BookingContext,backendURL);
 
  
   const fetchBookedSeats = async (timeSlot) => {
@@ -14,7 +14,7 @@ const Schedule = () => {
     
     try {
       const response = await fetch(
-        `http://localhost:3000/api/bookings/booked-seats?movie=${selectedMovie}&timeSlot=${timeSlot}`
+        `${backendURL}/api/bookings/booked-seats?movie=${selectedMovie}&timeSlot=${timeSlot}`
       );
       const data = await response.json();
       setBookedSeats(data.bookedSeats || []);
