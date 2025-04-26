@@ -34,7 +34,7 @@ Frontend: [Visit Website](https://bookngo-frontend.onrender.com)
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/BookNGo.git
+git clone https://github.com/Mdhasank/BookNGo.git
 cd BookNGo
 
 # Install frontend dependencies
