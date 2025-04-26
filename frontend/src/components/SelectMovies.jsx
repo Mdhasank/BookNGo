@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { movieList } from "../data";
+import { BookingContext } from "../context/BookingContext";
 
 const SelectMovies = () => {
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const { selectedMovie, setSelectedMovie, setSelectedTimeSlots, setSelectedSeats } = useContext(BookingContext);
 
-  const handleSelectMovie = (movie) => {
-    setSelectedMovie(movie);
+  const handleSelectMovie = (movieTitle) => {
+    setSelectedMovie(movieTitle);
+    setSelectedTimeSlots(null);  
+    setSelectedSeats([]); 
   };
 
   return (
