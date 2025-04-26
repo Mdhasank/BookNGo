@@ -3,7 +3,7 @@ import { BookingContext } from '../context/BookingContext';
 import { timeSlots } from '../data';
 
 const Schedule = () => {
-  const { selectedMovie, selectedTimeSlots, setSelectedTimeSlots, setBookedSeats } = useContext(BookingContext,backendURL);
+  const { selectedMovie, selectedTimeSlots, setSelectedTimeSlots, setBookedSeats,backendURL } = useContext(BookingContext);
 
  
   const fetchBookedSeats = async (timeSlot) => {
