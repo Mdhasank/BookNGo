@@ -9,6 +9,8 @@ export const BookingProvider = ({ children }) => {
   const [lastBooking, setLastBooking] = useState(null);
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [bookedSeats, setBookedSeats] = useState([]);
+  const [bookedSeatsLoading, setBookedSeatsLoading] = useState(false);
+
   const backendURL = "https://bookngo-e60g.onrender.com";
 
   const handlePostBooking = async () => {
@@ -73,6 +75,9 @@ export const BookingProvider = ({ children }) => {
       console.error("Movie and time slot are required to fetch booked seats!");
       return;
     }
+  
+    setBookedSeatsLoading(true);
+  
     try {
       const response = await fetch(
         `${backendURL}/api/bookings/booked-seats?movie=${selectedMovie}&timeSlot=${selectedTimeSlots}`
@@ -81,8 +86,11 @@ export const BookingProvider = ({ children }) => {
       setBookedSeats(data.bookedSeats || []);
     } catch (error) {
       console.error("Error fetching booked seats:", error);
+    } finally {
+      setBookedSeatsLoading(false);
     }
-  }
+  };
+  
 
   return (
     <BookingContext.Provider
@@ -103,6 +111,7 @@ export const BookingProvider = ({ children }) => {
         handleGetLastBooking,
         handleGetBookedSeats, 
         backendURL,
+        bookedSeatsLoading,
       }}
     >
       {children}
